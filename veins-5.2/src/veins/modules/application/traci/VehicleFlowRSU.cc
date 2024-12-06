@@ -79,7 +79,7 @@ void VehicleFlowRSU::handleLowerMsg(cMessage* msg) {
     BSMMessage* data = dynamic_cast<BSMMessage*>(enc);        //数据包转换成BeaconRSU
 
 
-    EV <<"vehicleID = "<< data->getVehicleID() << " receive message !" << " posX = " << data->getPosX() << "posY = "<< data->getPosY()<< " distance = "<<Distance(data->getPosX(),data->getPosY()) <<" RSSI = " << check_and_cast<DeciderResult80211*>(check_and_cast<PhyToMacControlInfo*>(WSM->getControlInfo())->getDeciderResult())->getRecvPower_dBm() <<endl;
+    EV <<"vehicleID = "<< data->getVehicleID() << " receive message !" << " posX = " << data->getPosX() << "posY = "<< data->getPosY()<< " distance = "<<RSU_Distance(data->getPosX(),data->getPosY()) <<" RSSI = " << check_and_cast<DeciderResult80211*>(check_and_cast<PhyToMacControlInfo*>(WSM->getControlInfo())->getDeciderResult())->getRecvPower_dBm() <<endl;
 
     int flag = 0;                                                      //旗標控制differ_pseudo
 
@@ -201,7 +201,7 @@ double VehicleFlowRSU::Predict_Vehicle_Number(double v){
     return k_j * (1 - v / v_f);
 }
 
-double VehicleFlowRSU::Distance(double x,double y){
+double VehicleFlowRSU::RSU_Distance(double x,double y){
     x = PosX - x;
     y = PosY - y;
     x = pow(x,2);

@@ -49,7 +49,7 @@ protected:
 
     void Update_Vehicle_Speed(int speed_time_count,double speed);
     double Predict_Vehicle_Number(double v);
-    double Distance(double x,double y);
+    double RSU_Distance(double x,double y);
 
     double PosX = 25;
     double PosY = 200;
